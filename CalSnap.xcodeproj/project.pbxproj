@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		092DF5DE2DDF9813007C58EA /* CalSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		096F0D262DE026D600D08292 /* CalSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		092DF5F02DDF9816007C58EA /* Exceptions for "CalSnap" folder in "CalSnap" target */ = {
+		0956AA2F2DE1C8A400A4CDC0 /* Exceptions for "CalSnap" folder in "CalSnap" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 092DF5DD2DDF9813007C58EA /* CalSnap */;
+			target = 096F0D252DE026D600D08292 /* CalSnap */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		092DF5E02DDF9813007C58EA /* CalSnap */ = {
+		096F0D282DE026D600D08292 /* CalSnap */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				092DF5F02DDF9816007C58EA /* Exceptions for "CalSnap" folder in "CalSnap" target */,
+				0956AA2F2DE1C8A400A4CDC0 /* Exceptions for "CalSnap" folder in "CalSnap" target */,
 			);
 			path = CalSnap;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		092DF5DB2DDF9813007C58EA /* Frameworks */ = {
+		096F0D232DE026D600D08292 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,18 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		092DF5D52DDF9813007C58EA = {
+		096F0D1D2DE026D600D08292 = {
 			isa = PBXGroup;
 			children = (
-				092DF5E02DDF9813007C58EA /* CalSnap */,
-				092DF5DF2DDF9813007C58EA /* Products */,
+				096F0D282DE026D600D08292 /* CalSnap */,
+				096F0D272DE026D600D08292 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		092DF5DF2DDF9813007C58EA /* Products */ = {
+		096F0D272DE026D600D08292 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				092DF5DE2DDF9813007C58EA /* CalSnap.app */,
+				096F0D262DE026D600D08292 /* CalSnap.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,64 +61,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		092DF5DD2DDF9813007C58EA /* CalSnap */ = {
+		096F0D252DE026D600D08292 /* CalSnap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 092DF5F12DDF9816007C58EA /* Build configuration list for PBXNativeTarget "CalSnap" */;
+			buildConfigurationList = 096F0D342DE026D800D08292 /* Build configuration list for PBXNativeTarget "CalSnap" */;
 			buildPhases = (
-				092DF5DA2DDF9813007C58EA /* Sources */,
-				092DF5DB2DDF9813007C58EA /* Frameworks */,
-				092DF5DC2DDF9813007C58EA /* Resources */,
+				096F0D222DE026D600D08292 /* Sources */,
+				096F0D232DE026D600D08292 /* Frameworks */,
+				096F0D242DE026D600D08292 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				092DF5E02DDF9813007C58EA /* CalSnap */,
+				096F0D282DE026D600D08292 /* CalSnap */,
 			);
 			name = CalSnap;
 			packageProductDependencies = (
 			);
 			productName = CalSnap;
-			productReference = 092DF5DE2DDF9813007C58EA /* CalSnap.app */;
+			productReference = 096F0D262DE026D600D08292 /* CalSnap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		092DF5D62DDF9813007C58EA /* Project object */ = {
+		096F0D1E2DE026D600D08292 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					092DF5DD2DDF9813007C58EA = {
+					096F0D252DE026D600D08292 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = 092DF5D92DDF9813007C58EA /* Build configuration list for PBXProject "CalSnap" */;
+			buildConfigurationList = 096F0D212DE026D600D08292 /* Build configuration list for PBXProject "CalSnap" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 092DF5D52DDF9813007C58EA;
+			mainGroup = 096F0D1D2DE026D600D08292;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 092DF5DF2DDF9813007C58EA /* Products */;
+			productRefGroup = 096F0D272DE026D600D08292 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				092DF5DD2DDF9813007C58EA /* CalSnap */,
+				096F0D252DE026D600D08292 /* CalSnap */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		092DF5DC2DDF9813007C58EA /* Resources */ = {
+		096F0D242DE026D600D08292 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		092DF5DA2DDF9813007C58EA /* Sources */ = {
+		096F0D222DE026D600D08292 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,61 +138,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		092DF5F22DDF9816007C58EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CalSnap/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.calSnap.CalSnap;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		092DF5F32DDF9816007C58EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CalSnap/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.calSnap.CalSnap;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		092DF5F42DDF9816007C58EA /* Debug */ = {
+		096F0D322DE026D800D08292 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,7 +201,7 @@
 			};
 			name = Debug;
 		};
-		092DF5F52DDF9816007C58EA /* Release */ = {
+		096F0D332DE026D800D08292 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -311,28 +257,86 @@
 			};
 			name = Release;
 		};
+		096F0D352DE026D800D08292 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CalSnap/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CalSnap/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calSnap.CalSnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		096F0D362DE026D800D08292 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CalSnap/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CalSnap/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calSnap.CalSnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		092DF5D92DDF9813007C58EA /* Build configuration list for PBXProject "CalSnap" */ = {
+		096F0D212DE026D600D08292 /* Build configuration list for PBXProject "CalSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				092DF5F42DDF9816007C58EA /* Debug */,
-				092DF5F52DDF9816007C58EA /* Release */,
+				096F0D322DE026D800D08292 /* Debug */,
+				096F0D332DE026D800D08292 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		092DF5F12DDF9816007C58EA /* Build configuration list for PBXNativeTarget "CalSnap" */ = {
+		096F0D342DE026D800D08292 /* Build configuration list for PBXNativeTarget "CalSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				092DF5F22DDF9816007C58EA /* Debug */,
-				092DF5F32DDF9816007C58EA /* Release */,
+				096F0D352DE026D800D08292 /* Debug */,
+				096F0D362DE026D800D08292 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 092DF5D62DDF9813007C58EA /* Project object */;
+	rootObject = 096F0D1E2DE026D600D08292 /* Project object */;
 }

@@ -1,0 +1,117 @@
+###############################################################################
+# IMPORTANT GLOBAL RULES (AI App Specific)
+
+###############################################################################
+# TECH STACK
+###############################################################################
+- SwiftUI and Swift
+
+###############################################################################
+# SWIFT-SPECIFIC RULES
+###############################################################################
+
+[State Management]
+- Use appropriate property wrappers and macros.
+- Annotate view models with `@Observable`, e.g. `@Observable final class MyModel`.
+- **Do NOT** use `@State` in a SwiftUI view to observe the view model; instead declare `let model: MyModel`.
+- For reference‑type state shared with a child view, inject the dependency via the child view’s initializer.
+- For value‑type state shared with a child view, use SwiftUI **bindings** *only if the child needs write access*; otherwise pass the value directly.
+
+###############################################################################
+- Always add debug logs & comments in the code for easier debug & readability      (Rule: DebugLogs, Comments)
+- Every time you choose to apply a rule(s), explicitly state the rule{s} in the    output. You can abbreviate the rule description to a single word or phrase.    (Rule: RuleEcho)
+###############################################################################
+# GENERAL iOS DEVELOPMENT GUIDELINES
+###############################################################################
+
+[Code Structure]
+- Use Swift's latest features and protocol-oriented programming.
+- Prefer value types (structs) over classes.
+- **Architecture:** MVVM with SwiftUI (see Project Tree below).
+- Source-folder layout: Features/, Core/, UI/, Resources/.
+- Follow Apple’s Human Interface Guidelines.
+
+[Naming]
+- camelCase for vars/funcs, PascalCase for types.
+- Verbs for methods (fetchData).
+- Boolean prefixes: is/has/should.
+- Clear, descriptive names that follow Apple style.
+
+[Swift Best Practices]
+- Embrace Swift’s strong type system; unwrap optionals safely.
+- Use `async/await` for concurrency; return `Result` for errors.
+- State handling: `@Published`, `@StateObject`, `@Environment`.
+- Prefer `let` over `var`; use protocol extensions for shared code.
+
+[UI Development]
+- SwiftUI first; fall back to UIKit only when necessary.
+- SF Symbols for icons; support dark mode & dynamic type.
+- Respect SafeArea, use `GeometryReader` for flexible layouts.
+- Handle all screen sizes, orientations, and keyboard states.
+
+[Performance]
+- Profile with Instruments.
+- Lazy-load views & images; optimize network requests.
+- Use background tasks judiciously; manage memory & state.
+
+[Data & State]
+- Core Data for complex persisted models; UserDefaults for light prefs.
+- Combine for reactive pipelines; clean, testable data flow.
+- Dependency Injection for services; support state restoration.
+
+###############################################################################
+# PROJECT TREE (SwiftUI + MVVM)
+###############################################################################
+CalSnap/
+├── App/
+│   └── CalSnapApp.swift         # @main entry, DI setup
+├── Core/                        # Reusable, cross-feature code
+│   ├── Network/
+│   │   ├── APIError.swift
+│   │   └── OpenAIService.swift
+│   ├── Persistence/
+│   │   ├── CoreDataStack.swift
+│   │   └── MealEntity+CoreData.swift
+│   ├── Extensions/
+│   │   └── UIImage+Resize.swift
+│   └── Utilities/
+│       └── Validators.swift
+├── Features/                    # One folder per major feature
+│   ├── Splash/
+│   │   ├── SplashView.swift
+│   │   ├── SplashViewModel.swift
+│   │   └── SplashModel.swift
+│   ├── CaptureImage/
+│   │   ├── CaptureView.swift
+│   │   ├── CaptureViewModel.swift
+│   │   └── CaptureModel.swift
+│   ├── AnalyzeFood/
+│   │   ├── AnalyzeView.swift
+│   │   ├── AnalyzeViewModel.swift
+│   │   └── NutritionResponse.swift
+│   ├── EditConfirm/
+│   │   ├── EditConfirmView.swift
+│   │   ├── EditConfirmViewModel.swift
+│   │   └── MealDraft.swift
+│   └── History/
+│       ├── HistoryView.swift
+│       ├── HistoryViewModel.swift
+│       └── MealSummary.swift
+├── UI/                          # Shared SwiftUI components / style
+│   ├── Components/
+│   │   ├── PrimaryButton.swift
+│   │   └── NutritionRow.swift
+│   └── Theme/
+│       ├── ColorPalette.swift
+│       └── Typography.swift
+├── Resources/
+│   ├── Assets.xcassets
+│   ├── Localizable.strings
+│   └── LaunchScreen.storyboard
+└── SupportingFiles/
+    ├── Info.plist
+    └── .cursourrules            # (this file)
+
+###############################################################################
+# END OF FILE
+###############################################################################
