@@ -63,12 +63,16 @@ struct FoodScannerView: View {
             } message: {
                 Text("Please allow camera access in Settings to scan food items.")
             }
-            .navigationDestination(isPresented: $showAnalysis) {
+            // Present FoodAnalysisView as a bottom sheet (Rule: UI Development, DebugLogs)
+            .sheet(isPresented: $showAnalysis) {
                 if let image = model.capturedImage {
                     FoodAnalysisView(
                         model: FoodAnalysisViewModel(),
                         capturedImage: image
                     )
+                    // These modifiers are also in FoodAnalysisView, but can be kept here for clarity
+                    //.presentationDetents([.fraction(0.65)])
+                    //.presentationDragIndicator(.visible)
                 }
             }
             .onAppear {
