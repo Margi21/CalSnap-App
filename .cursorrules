@@ -62,56 +62,31 @@
 ###############################################################################
 # PROJECT TREE (SwiftUI + MVVM)
 ###############################################################################
-CalSnap/
-├── App/
-│   └── CalSnapApp.swift         # @main entry, DI setup
-├── Core/                        # Reusable, cross-feature code
-│   ├── Network/
-│   │   ├── APIError.swift
-│   │   └── OpenAIService.swift
-│   ├── Persistence/
-│   │   ├── CoreDataStack.swift
-│   │   └── MealEntity+CoreData.swift
-│   ├── Extensions/
-│   │   └── UIImage+Resize.swift
-│   └── Utilities/
-│       └── Validators.swift
-├── Features/                    # One folder per major feature
-│   ├── Splash/
-│   │   ├── SplashView.swift
-│   │   ├── SplashViewModel.swift
-│   │   └── SplashModel.swift
-│   ├── CaptureImage/
-│   │   ├── CaptureView.swift
-│   │   ├── CaptureViewModel.swift
-│   │   └── CaptureModel.swift
-│   ├── AnalyzeFood/
-│   │   ├── AnalyzeView.swift
-│   │   ├── AnalyzeViewModel.swift
-│   │   └── NutritionResponse.swift
-│   ├── EditConfirm/
-│   │   ├── EditConfirmView.swift
-│   │   ├── EditConfirmViewModel.swift
-│   │   └── MealDraft.swift
-│   └── History/
-│       ├── HistoryView.swift
-│       ├── HistoryViewModel.swift
-│       └── MealSummary.swift
-├── UI/                          # Shared SwiftUI components / style
-│   ├── Components/
-│   │   ├── PrimaryButton.swift
-│   │   └── NutritionRow.swift
-│   └── Theme/
-│       ├── ColorPalette.swift
-│       └── Typography.swift
-├── Resources/
+.
+├── CalSnap
 │   ├── Assets.xcassets
-│   ├── Localizable.strings
-│   └── LaunchScreen.storyboard
-└── SupportingFiles/
-    ├── Info.plist
-    └── .cursourrules            # (this file)
+│   │   ├── AccentColor.colorset
+│   │   ├── AppIcon.appiconset
+│   │   └── Contents.json
+│   ├── CalSnapApp.swift
+│   ├── ContentView.swift
+│   ├── Features
+│   │   └── Splash
+│   ├── Info.plist
+│   └── Preview Content
+│       └── Preview Assets.xcassets
+├── CalSnap.xcodeproj
+│   ├── project.pbxproj
+│   └── project.xcworkspace
+│       └── contents.xcworkspacedata
+├── Instruction
+│   └── instruction.md
+├── README.md
+└── buildServer.json
 
 ###############################################################################
 # END OF FILE
 ###############################################################################
+
+[Project Path]
+/Users/margi.palan/Documents/CalSnap-App

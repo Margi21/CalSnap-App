@@ -1,9 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var foodScannerModel = FoodScannerViewModel()
+    
     var body: some View {
-        Text("Welcome to CalSnap!")
-            .font(.title)
+        NavigationStack {
+            FoodScannerView(model: foodScannerModel)
+                .navigationTitle("CalSnap")
+        }
     }
 }
 
