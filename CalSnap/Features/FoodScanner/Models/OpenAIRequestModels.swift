@@ -45,6 +45,7 @@ struct NutritionProperties: Codable {
     let healthScore: IntegerProperty
     let ingredients: IngredientsArrayProperty
     let dishCount: IntegerProperty
+    let totalCalories: Property
 }
 
 struct Property: Codable {

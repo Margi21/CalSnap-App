@@ -42,12 +42,13 @@ final class FoodAnalysisService {
                             "healthScore",
                             "ingredients",
                             "dishCount",
+                            "totalCalories"
                         ],
                         properties: NutritionProperties(
                             title: Property(type: "string"),
-                            proteinGrams: Property(type: "number"),
-                            carbsGrams: Property(type: "number"),
-                            fatsGrams: Property(type: "number"),
+                            proteinGrams: Property(type: "integer"),
+                            carbsGrams: Property(type: "integer"),
+                            fatsGrams: Property(type: "integer"),
                             healthScore: IntegerProperty(type: "integer", minimum: 0, maximum: 100),
                             ingredients: IngredientsArrayProperty(
                                 type: "array",
@@ -60,7 +61,8 @@ final class FoodAnalysisService {
                                     )
                                 )
                             ),
-                            dishCount: IntegerProperty(type: "integer", minimum: nil, maximum: nil)
+                            dishCount: IntegerProperty(type: "integer", minimum: nil, maximum: nil),
+                            totalCalories: Property(type: "integer")
                         )
                     )
                 )

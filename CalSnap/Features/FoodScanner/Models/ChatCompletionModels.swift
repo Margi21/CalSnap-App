@@ -152,22 +152,23 @@ public struct TokenDetails: Codable {
 }
 
 struct FoodAnalysisResponse: Codable {
-    let description: String
-    let type: String
+    let description: String?
+    let type: String?
     let properties: FoodProperties
 }
 
 struct FoodProperties: Codable {
     let title: String
-    let proteinGrams: Double
-    let carbsGrams: Double
-    let fatsGrams: Double
+    let proteinGrams: Int
+    let carbsGrams: Int
+    let fatsGrams: Int
     let healthScore: Int
     let ingredients: [Ingredient]
     let dishCount: Int
+    let totalCalories: Int
 }
 
 struct Ingredient: Codable {
     let name: String
-    let calories: Double
+    let calories: Int
 }
