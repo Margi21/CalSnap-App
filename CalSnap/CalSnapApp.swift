@@ -1,9 +1,13 @@
 import SwiftUI
+import CoreData
 
 @main
 struct CalSnapApp: App {
     @State private var showingSplash = true
     @State private var splashViewModel = SplashViewModel()
+    
+    // Initialize Core Data
+    @StateObject private var coreDataManager = CoreDataManager.shared
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +23,7 @@ struct CalSnapApp: App {
             } else {
                 ContentView()
                     .transition(.opacity)
+                    .environment(\.managedObjectContext, coreDataManager.viewContext)
             }
         }
     }

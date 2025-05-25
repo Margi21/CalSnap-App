@@ -6,7 +6,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             FoodScannerView(model: foodScannerModel)
-                .navigationTitle("CalSnap")
         }
     }
 }

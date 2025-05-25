@@ -4,6 +4,11 @@ struct FoodAnalysisView: View {
     let model: FoodAnalysisViewModel
     let capturedImage: UIImage // Kept for analysis and display
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) private var context // Inject Core Data context (Rule: Data & State)
+    
+    @State private var showSaveAlert = false // For save confirmation (Rule: UI Development)
+    @State private var saveError: String? = nil // For error handling
+    var onSave: (() -> Void)? = nil // Callback to notify parent to refresh and dismiss (Rule: UI Development)
     
     var body: some View {
         VStack(spacing: 0) {
@@ -106,7 +111,31 @@ struct FoodAnalysisView: View {
             
             // Action Buttons at the bottom
             HStack(spacing: 16) {
-                Button(action: { dismiss() }) {
+                Button(action: {
+                    // Save to Core Data (Rule: Core Data, DebugLogs)
+                    guard let result = model.analysisResult else {
+                        print("[FoodAnalysisView] No analysis result to save")
+                        saveError = "No analysis result to save."
+                        showSaveAlert = true
+                        return
+                    }
+                    let imageData = capturedImage.jpegData(compressionQuality: 0.8)
+                    let food = CoreDataManager.shared.createFood(from: result.properties, imageData: imageData)
+                    if context.hasChanges {
+                        do {
+                            try context.save()
+                            print("[FoodAnalysisView] Food entry saved to Core Data: \(food.title ?? "(no title)")")
+                            saveError = nil
+                        } catch {
+                            print("[FoodAnalysisView] Error saving context: \(error)")
+                            saveError = error.localizedDescription
+                        }
+                    } else {
+                        print("[FoodAnalysisView] No changes to save in context.")
+                        saveError = nil
+                    }
+                    showSaveAlert = true
+                }) {
                     Text("Save Result")
                         .frame(maxWidth: .infinity)
                 }
@@ -114,6 +143,17 @@ struct FoodAnalysisView: View {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 32)
+            .alert(isPresented: $showSaveAlert) {
+                if let error = saveError {
+                    return Alert(title: Text("Save Failed"), message: Text(error), dismissButton: .default(Text("OK")))
+                } else {
+                    return Alert(title: Text("Saved!"), message: Text("Food analysis result saved."), dismissButton: .default(Text("OK"), action: {
+                        print("[FoodAnalysisView] Save OK tapped, navigating to home screen.")
+                        onSave?() // Notify parent to refresh and dismiss
+                        dismiss()
+                    }))
+                }
+            }
         }
         .background(Color(.systemBackground))
         .ignoresSafeArea(edges: .bottom)
