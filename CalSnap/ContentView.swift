@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var foodScannerModel = FoodScannerViewModel()
+    @State var foodScannerModel = FoodScannerViewModel()
     
     var body: some View {
         NavigationStack {

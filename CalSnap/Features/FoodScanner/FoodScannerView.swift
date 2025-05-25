@@ -1,7 +1,8 @@
 import SwiftUI
+import Observation
 
 struct FoodScannerView: View {
-    @ObservedObject var model: FoodScannerViewModel
+    @Bindable var model: FoodScannerViewModel
     @State private var showAnalysis = false
     @State private var selectedFoodForAnalysis: Food? = nil
     
@@ -35,7 +36,7 @@ struct FoodScannerView: View {
                                 }
                                 .onTapGesture {
                                     print("[FoodScannerView] Selected date: \(date)")
-                                    model.selectedDate = date
+                                    model.dateSelected(date)
                                 }
                             }
                         }
@@ -130,7 +131,11 @@ struct FoodScannerView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $model.showCamera) {
+            // Explicit bindings for @Observable properties (Rule: Swift Best Practices)
+            .sheet(isPresented: Binding(
+                get: { model.showCamera },
+                set: { model.showCamera = $0 }
+            )) {
                 CameraView { image in
                     model.handleCapturedImage(image)
                     if image != nil {
@@ -140,7 +145,10 @@ struct FoodScannerView: View {
                 .ignoresSafeArea()
             }
             .alert("Camera Access Required",
-                   isPresented: $model.showPermissionAlert) {
+                   isPresented: Binding(
+                    get: { model.showPermissionAlert },
+                    set: { model.showPermissionAlert = $0 }
+                   )) {
                 Button("Open Settings", action: {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(url)
@@ -164,6 +172,7 @@ struct FoodScannerView: View {
                     FoodAnalysisView(
                         model: FoodAnalysisViewModel(),
                         capturedImage: image,
+                        selectedDate: model.selectedDate,
                         onSave: {
                             print("[FoodScannerView] onSave callback received, dismissing analysis sheet and refreshing home screen.")
                             showAnalysis = false
@@ -174,9 +183,13 @@ struct FoodScannerView: View {
                     FoodAnalysisView(
                         model: FoodAnalysisViewModel(),
                         capturedImage: uiImage,
+                        selectedDate: food.dateAdded,
+                        isEditMode: true,
+                        foodToEdit: food,
                         onSave: {
                             print("[FoodScannerView] onSave callback received from food card, dismissing analysis sheet.")
                             selectedFoodForAnalysis = nil
+                            model.loadAllFoods()
                         }
                     )
                 }

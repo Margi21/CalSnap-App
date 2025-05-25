@@ -54,7 +54,7 @@ class CoreDataManager: ObservableObject {
         }
     }
     
-    func createFood(from analysisResult: FoodProperties, imageData: Data?) -> Food {
+    func createFood(from analysisResult: FoodProperties, imageData: Data?, date: Date? = nil) -> Food {
         print("Debug: Creating new food entry")
         let food = Food(context: viewContext)
         food.id = UUID()
@@ -65,7 +65,7 @@ class CoreDataManager: ObservableObject {
         food.healthScore = Int32(analysisResult.healthScore)
         food.totalCalories = Int32(analysisResult.totalCalories)
         food.ingredients = analysisResult.ingredients.map { $0.name }
-        food.dateAdded = Date()
+        food.dateAdded = date ?? Date()
         food.imageData = imageData
         
         saveContext()
@@ -92,5 +92,21 @@ class CoreDataManager: ObservableObject {
         print("Debug: Deleting food entry: \(food.id?.uuidString ?? "unknown")")
         viewContext.delete(food)
         saveContext()
+    }
+    
+    /// Update an existing Food entry with new properties and image data (Rule: Core Data, DebugLogs, Comments, RuleEcho)
+    func updateFood(_ food: Food, with properties: FoodProperties, imageData: Data?, date: Date? = nil) {
+        print("Debug: Updating food entry: \(food.id?.uuidString ?? "unknown")")
+        food.title = properties.title
+        food.proteinGrams = Int32(properties.proteinGrams)
+        food.carbsGrams = Int32(properties.carbsGrams)
+        food.fatsGrams = Int32(properties.fatsGrams)
+        food.healthScore = Int32(properties.healthScore)
+        food.totalCalories = Int32(properties.totalCalories)
+        food.ingredients = properties.ingredients.map { $0.name }
+        food.dateAdded = date ?? food.dateAdded
+        food.imageData = imageData ?? food.imageData
+        saveContext()
+        print("Debug: Food entry updated with ID: \(food.id?.uuidString ?? "unknown")")
     }
 } 

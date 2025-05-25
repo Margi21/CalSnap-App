@@ -1,23 +1,20 @@
 import SwiftUI
 import AVFoundation
+import Observation
 
-class FoodScannerViewModel: ObservableObject {
+@Observable
+final class FoodScannerViewModel {
     // MARK: - Properties
-    @Published var showCamera = false
-    @Published var capturedImage: UIImage?
-    @Published var isCameraAuthorized = false
-    @Published var showPermissionAlert = false
-    @Published var selectedDate: Date = Calendar.current.startOfDay(for: Date())
-    @Published var allFoods: [Food] = []
+    var showCamera = false
+    var capturedImage: UIImage?
+    var isCameraAuthorized = false
+    var showPermissionAlert = false
+    var selectedDate: Date = Calendar.current.startOfDay(for: Date())
+    private(set) var allFoods: [Food] = []
     
     // Computed property: foods for selected date
-    var foodsForSelectedDate: [Food] {
-        let calendar = Calendar.current
-        return allFoods.filter { food in
-            guard let date = food.dateAdded else { return false }
-            return calendar.isDate(date, inSameDayAs: selectedDate)
-        }
-    }
+    private(set) var foodsForSelectedDate: [Food] = []
+    
     // Computed properties for macros and calories
     var totalCalories: Int {
         foodsForSelectedDate.reduce(0) { $0 + Int($1.totalCalories) }
@@ -35,6 +32,7 @@ class FoodScannerViewModel: ObservableObject {
     // MARK: - Initialization
     init() {
         checkCameraPermission()
+        updateFoodsForSelectedDate() // Initial update
     }
     
     // MARK: - Camera Permission
@@ -79,9 +77,26 @@ class FoodScannerViewModel: ObservableObject {
         print("📸 Camera State - Authorized: \(isCameraAuthorized), Showing: \(showCamera), Has Image: \(capturedImage != nil)")
     }
     
-    // Fetch all foods from Core Data
+    // Fetch all foods from Core Data and update selected date foods
     func loadAllFoods() {
         print("[FoodScannerViewModel] Loading all foods from Core Data")
         allFoods = CoreDataManager.shared.fetchFoods()
+        updateFoodsForSelectedDate()
+    }
+    
+    // Update foods for selected date
+    private func updateFoodsForSelectedDate() {
+        let calendar = Calendar.current
+        foodsForSelectedDate = allFoods.filter { food in
+            guard let date = food.dateAdded else { return false }
+            return calendar.isDate(date, inSameDayAs: selectedDate)
+        }
+        print("[FoodScannerViewModel] Updated foods for date: \(selectedDate), count: \(foodsForSelectedDate.count)")
+    }
+    
+    // Called when selected date changes
+    func dateSelected(_ date: Date) {
+        selectedDate = date
+        updateFoodsForSelectedDate()
     }
 } 

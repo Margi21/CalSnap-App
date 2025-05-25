@@ -151,24 +151,43 @@ public struct TokenDetails: Codable {
     }
 }
 
-struct FoodAnalysisResponse: Codable {
-    let description: String?
-    let type: String?
-    let properties: FoodProperties
+public struct Ingredient: Codable {
+    public let name: String
+    public let calories: Int
+    public init(name: String, calories: Int) {
+        self.name = name
+        self.calories = calories
+    }
 }
 
-struct FoodProperties: Codable {
-    let title: String
-    let proteinGrams: Int
-    let carbsGrams: Int
-    let fatsGrams: Int
-    let healthScore: Int
-    let ingredients: [Ingredient]
-    let dishCount: Int
-    let totalCalories: Int
+public struct FoodProperties: Codable {
+    public var title: String
+    public var proteinGrams: Int
+    public var carbsGrams: Int
+    public var fatsGrams: Int
+    public var healthScore: Int
+    public var ingredients: [Ingredient]
+    public var dishCount: Int
+    public var totalCalories: Int
+    public init(title: String, proteinGrams: Int, carbsGrams: Int, fatsGrams: Int, healthScore: Int, ingredients: [Ingredient], dishCount: Int, totalCalories: Int) {
+        self.title = title
+        self.proteinGrams = proteinGrams
+        self.carbsGrams = carbsGrams
+        self.fatsGrams = fatsGrams
+        self.healthScore = healthScore
+        self.ingredients = ingredients
+        self.dishCount = dishCount
+        self.totalCalories = totalCalories
+    }
 }
 
-struct Ingredient: Codable {
-    let name: String
-    let calories: Int
+public struct FoodAnalysisResponse: Codable {
+    public var description: String?
+    public var type: String?
+    public var properties: FoodProperties
+    public init(description: String?, type: String?, properties: FoodProperties) {
+        self.description = description
+        self.type = type
+        self.properties = properties
+    }
 }
