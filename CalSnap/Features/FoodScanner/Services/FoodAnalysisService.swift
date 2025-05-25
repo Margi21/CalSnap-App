@@ -10,8 +10,7 @@ enum FoodAnalysisError: Error {
 
 @Observable
 final class FoodAnalysisService {
-    private let openAIAPIKey: String =
-        "API_key"
+    private let openAIAPIKey: String = "API_KEY"
     private let openAIEndpoint = "https://api.openai.com/v1/chat/completions"
 
     func analyzeFood(image: Data) async throws -> FoodAnalysisResponse {
@@ -106,54 +105,56 @@ final class FoodAnalysisService {
         do {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
-            let dummyResponse = """
-{
-    "id": "chatcmpl-BanMQNEdG1cxf0ffcJzpHYfmx0LOt",
-    "object": "chat.completion",
-    "created": 1748109250,
-    "model": "gpt-4o-mini-2024-07-18",
-    "choices": [
-        {
-            "index": 0,
-            "message": {
-                "role": "assistant",
-                "content": "{\\"description\\":\\"Detailed macro and calorie breakdown for a food dish.\\",\\"type\\":\\"object\\",\\"properties\\":{\\"title\\":\\"Seared Tuna Bowl with Vegetables and Rice\\",\\"proteinGrams\\":35,\\"carbsGrams\\":50,\\"fatsGrams\\":20,\\"healthScore\\":8,\\"ingredients\\":[{\\"name\\":\\"Seared Tuna\\",\\"calories\\":200},{\\"name\\":\\"Brown Rice\\",\\"calories\\":150},{\\"name\\":\\"Corn\\",\\"calories\\":70},{\\"name\\":\\"Snap Peas\\",\\"calories\\":30},{\\"name\\":\\"Grilled Asparagus\\",\\"calories\\":40},{\\"name\\":\\"Avocado\\",\\"calories\\":160},{\\"name\\":\\"Sesame Seeds\\",\\"calories\\":50},{\\"name\\":\\"Soft Boiled Egg\\",\\"calories\\":70},{\\"name\\":\\"Green Onions\\",\\"calories\\":10}],\\"dishCount\\":1,\\"totalCalories\\":780}}",
-                "refusal": null,
-                "annotations": []
-            },
-            "logprobs": null,
-            "finish_reason": "stop"
+            let requestData = try encoder.encode(request)
+            urlRequest.httpBody = requestData
+
+            // Print request for debugging
+            if let requestString = String(data: requestData, encoding: .utf8) {
+                print("Debug: Request body:")
+                print(requestString)
+            }
+
+        } catch {
+            print("Debug: Error encoding request: \(error)")
+            throw FoodAnalysisError.invalidResponse
         }
-    ],
-    "usage": {
-        "prompt_tokens": 14322,
-        "completion_tokens": 167,
-        "total_tokens": 14489,
-        "prompt_tokens_details": {
-            "cached_tokens": 0,
-            "audio_tokens": 0
-        },
-        "completion_tokens_details": {
-            "reasoning_tokens": 0,
-            "audio_tokens": 0,
-            "accepted_prediction_tokens": 0,
-            "rejected_prediction_tokens": 0
-        }
-    },
-    "service_tier": "default",
-    "system_fingerprint": "fp_92e0377081"
-}
-"""
-            // Convert dummy response to Data
-            guard let dummyData = dummyResponse.data(using: .utf8) else {
+
+        print("Debug: Sending request to OpenAI")
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+            // Print raw response data
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("Debug: Raw response:")
+                print(responseString)
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Debug: Response is not HTTPURLResponse")
                 throw FoodAnalysisError.invalidResponse
             }
-            
-            print("Debug: Using dummy response data")
-            
-            // Use dummy data instead of making API call
-            let openAIResponse = try JSONDecoder().decode(ChatCompletionResponse.self, from: dummyData)
-            
+
+            print("Debug: Response status code: \(httpResponse.statusCode)")
+            print("Debug: Response headers: \(httpResponse.allHeaderFields)")
+
+            if !(200...299).contains(httpResponse.statusCode) {
+                if let errorJson = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                    print("Debug: Error response:")
+                    print(errorJson)
+
+                    if let error = errorJson["error"] as? [String: Any],
+                        let message = error["message"] as? String
+                    {
+                        throw FoodAnalysisError.apiError(message)
+                    }
+                }
+                throw FoodAnalysisError.invalidResponse
+            }
+
+            print("Debug: Attempting to decode OpenAI response")
+            let openAIResponse = try JSONDecoder().decode(ChatCompletionResponse.self, from: data)
+
             guard let content = openAIResponse.choices.first?.message.content else {
                 print("Debug: No content in choices")
                 throw FoodAnalysisError.invalidResponse
